@@ -1,54 +1,88 @@
-# 🚗 PitstopPal – Smart Road Trip Planner (Powered by Gemini AI)
+# 🚗 PitstopPal – Smart Road Trip Planner (Powered by Gemini AI + RAG)
 
-**PitstopPal** is an intelligent chatbot that helps users plan personalized, budget-friendly road trips. Using Google’s **Gemini API**, the bot takes natural language inputs and returns optimized routes, budget estimates, and interesting stopovers between two locations.
+**PitstopPal** is an AI-powered road trip planning chatbot that creates **personalized, budget-friendly travel itineraries**.  
+It uses **Google’s Gemini API** for natural language understanding and **RAG (Retrieval-Augmented Generation)** to fetch **real-world travel data** like scenic spots, hotel prices, and estimated costs before generating your plan.  
+
+Whether you want a **nature escape, cultural tour, or adventure trip**, PitstopPal finds the best routes, stopovers, and budget breakdowns — all in conversational style.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-- 🔍 Understands natural language inputs (e.g. "Plan a trip from Delhi to Manali with ₹5000")
-- 🗺️ Suggests scenic or useful stops between origin and destination
-- 💸 Estimates cost for travel, food, and budget stays
-- 🧭 Suggests routes based on user preferences (e.g., nature, adventure, food)
-- 🧠 Powered by Google’s **Gemini API** (Generative AI)
+- **🧠 Smart Trip Planning:** Understands natural language prompts like  
+  `"Plan a road trip from Delhi to Manali under ₹5000 with 2 nature stops."`
+- **📚 Retrieval-Augmented Generation (RAG):** Fetches up-to-date travel data from:
+  - Travel guides & curated datasets
+  - Google Maps API
+  - Hotel booking APIs
+- **🗺 Scenic Stop Suggestions:** Finds attractions, food spots, and rest stops between origin and destination
+- **💸 Budget Estimates:** Calculates fuel, food, stay, and miscellaneous costs
+- **⚡ Context-Aware AI:** Plans are generated with *real* travel data for higher accuracy
+- **🎯 Personalized Routes:** Customizes based on user preferences (nature, history, food, nightlife)
 
+---
 
+## ✅ Example Bot Output
 
-### ✅ Bot Output:
+**Prompt:**  
+> Plan a trip from Bangalore to Goa under ₹6000 with one nature stop and one beach.
 
+**Bot Output:**  
 - **Route:** Bangalore → Jog Falls → Gokarna → Goa  
 - **Stops:**
-  - 🏞️ Jog Falls – Perfect for a waterfall break
-  - 🧘‍♀️ Gokarna – Beach town, less crowded than Goa
-- **Estimated Cost Breakdown:**
-  - Fuel: ₹1800
-  - Food: ₹1000
-  - Stay: ₹2500 (2 nights)
-  - Misc: ₹700
+  - 🏞 **Jog Falls** – Breathtaking waterfall stop  
+  - 🏖 **Gokarna** – Calm beach town with affordable stays  
+- **Cost Breakdown:**
+  - Fuel: ₹1800  
+  - Food: ₹1500  
+  - Stay: ₹2200 (2 nights)  
+  - Misc: ₹500  
+- **Tip:** Leave early morning to avoid traffic; Gokarna homestays are cheaper than Goa hotels.
 
 ---
 
 ## 🛠 Tech Stack
 
-| Component       | Technology               |
-|----------------|---------------------------|
-| AI/LLM          | **Gemini API (Google AI)** |
-| Frontend        | React.js / HTML + CSS     |
-| Backend         | Node.js / Express / Flask |
-| Routing API     | Google Maps API (optional)|
-| Hosting         | Firebase / Vercel / Render|
+| Layer          | Technology |
+|----------------|------------|
+| **AI Model**   | Gemini API (Google AI) |
+| **Enhancement**| Retrieval-Augmented Generation (RAG) |
+| **Retrieval**  | Curated Travel Dataset + Google Maps API |
+| **Backend**    | Node.js + Express (or Flask alternative) |
+| **Frontend**   | React.js, HTML, CSS |
+| **Hosting**    | Vercel (Frontend), Render/Heroku (Backend) |
+| **Optional**   | MongoDB / Firebase for storing queries |
 
 ---
 
-## 🧪 How It Works
+## 🔄 How PitstopPal Works (Data Flow)
 
-1. User provides:
-   - Start and end location
-   - Budget
-   - Preferences (optional)
-2. The system:
-   - Parses input using Gemini API
-   - Retrieves or generates stops and estimated costs
-   - Returns the trip plan in conversational format
+### **1. User Input**
+- The user enters:
+  - Start location
+  - Destination
+  - Budget
+  - Optional preferences (e.g., `"avoid toll roads"`, `"add waterfalls"`)
+
+### **2. RAG Retrieval**
+- Backend fetches:
+  - Scenic spots from dataset & APIs
+  - Fuel price estimates (based on distance)
+  - Hotel pricing
+- Retrieved data is stored temporarily in a **retrieval index**
+
+### **3. Context Building**
+- Retrieved info + user query is merged into a structured context
+
+### **4. AI Processing**
+- Context is passed to Gemini API
+- Gemini generates a **personalized travel plan** in conversational format
+
+### **5. Output to User**
+- Bot returns:
+  - Optimized route
+  - Suggested stops
+  - Cost breakdown
+  - Extra travel tips
 
 ---
