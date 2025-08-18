@@ -30,6 +30,7 @@ Hotel options: ₹1000-₹1200 per night
 """
 
         # --- 3. System prompt (role="model")
+        #Zero Shot prompting    
         system_prompt = f"""
 You are PitstopPal, an AI-powered road trip planner.
 Generate personalized, budget-friendly travel itineraries using real-world data.
