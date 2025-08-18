@@ -4,10 +4,20 @@ meta {
   seq: 1
 }
 
-get {
+post {
   url: http://127.0.0.1:5000/plan-trip
-  body: none
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "start": "Bangalore",
+    "destination": "Goa",
+    "budget": "₹6000",
+    "preferences": "1 nature stop, 1 beach"
+  }
+  
 }
 
 settings {
