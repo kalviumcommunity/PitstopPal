@@ -29,21 +29,20 @@ Fuel cost estimate: ₹1800
 Hotel options: ₹1000-₹1200 per night
 """
 
-        # --- 3. System prompt (dynamic prompting with rules)
+        # --- 3. Chain-of-thought system prompt
         system_prompt = f"""
 You are PitstopPal, an AI-powered road trip planner.
+Use chain-of-thought reasoning: break the problem into steps before answering.
+1. Understand user inputs (start, destination, budget, preferences).
+2. Think step by step about possible stops, costs, and activities.
+3. Filter based on budget and preferences.
+4. Finally, present a clear trip plan.
 
-Generate a personalized travel itinerary using real-world data.
-Context for trip: {rag_context}
+Context for planning:
+{rag_context}
 
-User preferences: {preferences}
-Budget: {budget}
-
-Guidelines:
-- If budget is below ₹5000, focus on affordable stays and fewer paid activities.
-- If preferences include 'beaches', highlight coastal routes and water activities.
-- If preferences include 'adventure', suggest trekking or outdoor experiences.
-- Always output in the format: Route → Stops → Cost → Tips
+Output format: 
+Route → Stops → Cost → Tips
 """
 
         # --- 4. User prompt
