@@ -29,8 +29,7 @@ Fuel cost estimate: ₹1800
 Hotel options: ₹1000-₹1200 per night
 """
 
-        # --- 3. System prompt (role="model")
-        #dynamic Shot prompting    
+        # --- 3. System prompt (dynamic prompting with rules)
         system_prompt = f"""
 You are PitstopPal, an AI-powered road trip planner.
 
@@ -59,22 +58,17 @@ Plan a road trip with the following details:
         # --- 5. Optional Google Search tool
         tools = [types.Tool(googleSearch=types.GoogleSearch())]
 
-        # --- 6. Configure generation
+        # --- 6. Configure generation (with temperature)
         generate_content_config = types.GenerateContentConfig(
             thinking_config=types.ThinkingConfig(thinking_budget=-1),
             tools=tools,
+            temperature=0.7   # 👈 Added temperature control
         )
 
         # --- 7. Prepare contents with system + user roles
         contents = [
-            types.Content(
-                role="model",  # system instructions
-                parts=[types.Part(text=system_prompt)]
-            ),
-            types.Content(
-                role="user",  # user request
-                parts=[types.Part(text=user_prompt)]
-            )
+            types.Content(role="model", parts=[types.Part(text=system_prompt)]),
+            types.Content(role="user", parts=[types.Part(text=user_prompt)])
         ]
 
         # --- 8. Generate itinerary from Gemini (streaming)
@@ -94,7 +88,6 @@ Plan a road trip with the following details:
                 contents=contents,
                 config=generate_content_config
             )
-            # Use output_text instead of contents
             plan_text = response.output_text if response.output_text else ""
 
         return jsonify({"plan": plan_text})
