@@ -63,7 +63,8 @@ Plan a road trip with the following details:
             thinking_config=types.ThinkingConfig(thinking_budget=-1),
             tools=tools,
             temperature=0.7,  # 👈 Added temperature control
-            top_p=0.9 #added top p
+            top_p=0.9, #added top p
+            top_k=40 #added top k
         )
 
         # --- 7. Prepare contents with system + user roles
