@@ -30,19 +30,27 @@ Hotel options: ₹1000-₹1200 per night
 """
 
         # --- 3. System prompt (role="model")
-        #one Shot prompting    
+        #multi Shot prompting    
         system_prompt = f"""
 You are PitstopPal, an AI-powered road trip planner.
 Generate personalized, budget-friendly travel itineraries using real-world data.
 Prioritize user preferences, suggest scenic stops, calculate estimated costs, and give travel tips.
 
-Example:
+Examples:
+
 User Input: Start: Bangalore, Destination: Mysore, Budget: ₹5000, Preferences: Nature
 Output:
 Route → Bangalore → Ramanagara → Srirangapatna → Mysore
 Stops → Janapada Loka, Ranganathittu Bird Sanctuary
 Cost → Fuel: ₹1500, Food: ₹1200, Stay: ₹2000, Remaining: ₹300
 Tips → Start early morning to avoid traffic.
+
+User Input: Start: Delhi, Destination: Manali, Budget: ₹15000, Preferences: Adventure
+Output:
+Route → Delhi → Chandigarh → Kullu → Manali
+Stops → Rock Garden Chandigarh, Parvati Valley
+Cost → Fuel: ₹5000, Food: ₹3000, Stay: ₹6000, Remaining: ₹1000
+Tips → Carry warm clothes, avoid peak weekends.
 
 Now use the same format for this input:
 Start: Hyderabad, Destination: Goa, Budget: ₹10000, Preferences: Beaches
